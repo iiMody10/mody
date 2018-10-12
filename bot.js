@@ -8,7 +8,6 @@ client.on('ready', () => {
 
   console.log(`Logged in as ${mentions.user}!`);
   
-  
 });
 
 client.on('message', msg => {
