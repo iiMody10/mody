@@ -11,10 +11,10 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-
+let mentions = msg.mentions.members.first();
   if (msg.content === 'السلام عليكم') {
 
-    msg.reply('** ${mentions.user}عليكم السلام 🌹**');
+    msg.reply(`** ${mentions.user}عليكم السلام 🌹**`);
 
   }
 
