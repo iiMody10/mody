@@ -7,8 +7,35 @@ const prefix = '!'
 client.on('ready', () => {
 
   console.log(`Logged in as ${mentions.user}!`);
-
   
+  
+});
+
+client.on('message', msg => {
+let mentions = msg.mentions.members.first();
+  if (msg.content === 'السلام عليكم') {
+
+    msg.reply('** `` عليكم السلام 🌹**');
+
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Lion.on("message", async message => {
         if(!message.channel.guild) return;
         if(message.content.startsWith(prefix + 'server')) {
@@ -35,19 +62,6 @@ Lion.on("message", async message => {
        message.channel.send(FaReSsS);
      // C O D E S & B Y F A R E S
       }
-    });  
-  
-  
-});
-
-client.on('message', msg => {
-let mentions = msg.mentions.members.first();
-  if (msg.content === 'السلام عليكم') {
-
-    msg.reply('** `` عليكم السلام 🌹**');
-
-  }
-
-});
+    });
 
 client.login(process.env.BOT_TOKEN);
