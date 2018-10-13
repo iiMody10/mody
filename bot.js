@@ -33,4 +33,29 @@ client.on('message', function(msg) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', msg => {
+let mentions = msg.mentions.members.first();
+  if (msg.content === 'السلام عليكم') {
+
+    msg.reply('** `` عليكم السلام ??**');
+
+  }
+
+});
+
+
+
+
 client.login(process.env.BOT_TOKEN);
