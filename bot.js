@@ -34,7 +34,8 @@ client.on('ready', () => {
        message.channel.send(FaReSsS);
      // C O D E S & B Y F A R E S
       }
-    });
+  
+ });
 
 
 
