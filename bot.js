@@ -33,7 +33,7 @@ let mentions = msg.mentions.members.first();
 
 
 
-
+```
 Lion.on("message", async message => {
         if(!message.channel.guild) return;
         if(message.content.startsWith(prefix + 'server')) {
@@ -60,6 +60,7 @@ Lion.on("message", async message => {
        message.channel.send(FaReSsS);
      // C O D E S & B Y F A R E S
       }
+```
 });
 
 client.login(process.env.BOT_TOKEN);
