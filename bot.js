@@ -7,7 +7,8 @@ const prefix = '!'
 client.on('ready', () => {
 
   console.log(`Logged in as ${mentions.user}!`);
-Lion.on("message", async message => {
+
+  Lion.on("message", async message => {
         if(!message.channel.guild) return;
         if(message.content.startsWith(prefix + 'server')) {
         let guild = message.guild
