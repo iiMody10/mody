@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = ''
+const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -28,6 +28,38 @@ client.on('message', function(msg) {
     .addField('📅** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
     msg.channel.send({embed:embed});
   }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const bannedwords = [
+    "كل زق",
+    "كسمك",
+    "كل خرا",
+    "يلعن",
+    "يا خول",
+    "يا عرص"
+
+  ];
+
+client.on('message',  message => {
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply(" احترم نفسك , يمنع الشتم في خادمنا او سوف تتعرض الي  ميوت ").then(msg => {msg.delete(5000)});;
+  };
 });
 
 
