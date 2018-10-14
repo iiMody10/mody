@@ -258,8 +258,8 @@ client.on('message', message => {
   message.channel.send("**تم ارسال الرابط برسالة خاصة**")
 
 message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 100**`)
-https://discord.gg/UpQHDF
+عدد استخدامات الرابط : 100 : https://discord.gg/UpQHDF**`)
+
 
     }
 });
