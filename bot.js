@@ -304,7 +304,7 @@ hero.on('voiceStateUpdate', (u, member) => {
     if(member.selfDeafen) return;
     vpoints[author].points += rPoints;
   }, 5000); // 5 Secs
-}); 
+});
 
 
 
