@@ -319,45 +319,65 @@ message.author.send(`**مدة الرابط : يـوم
 
 
 
-var dat = JSON.parse(fs.readFileSync('./invite.json', 'utf8'));
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("499671857490952205")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        })
-    })
-})
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    if (!channel) {
-        console.log("!channel fails");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('made it till here!');
-    var guild;
-    while (!guild)
-        guild = client.guilds.get("499671857490952205")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
-                    console.log(3);
- channel.send(`${member} Joined By ${Invite.inviter}'s invite ${Invite.code} | invited by ${Invite.inviter}`)
- }
-            dat[Inv] = Invite.uses;
-        })
-    })
+const Discord = require('discord.js');
+const fs = require('fs');
+const hero = new Discord.Client({disableEveryone: true, maxMessagesCache: 1});
+const config = { prefix: "$" };
+const tpoints = {};
+const vpoints = {};
+hero.config = config;
+hero.login(hero.config.token);
+hero.on('ready',async () => {
+  console.log(`.Codes TOP.`);
+  hero.users.forEach(m => {
+    if(m.bot) return;
+    if(!tpoints[m.id]) tpoints[m.id] = {points: 0, id: m.id};
+ 
+    if(!vpoints[m.id]) vpoints[m.id] = {points: 0, id: m.id};
+  });
+});
+ 
+hero.on('message',async message => {
+  if(message.author.bot || message.channel.type === 'dm') return;
+  let args = message.content.split(' ');
+  let member = message.member;
+  let mention = message.mentions.users.first();
+  let guild = message.guild;
+  let author = message.author;
+ 
+  let rPoints = Math.floor(Math.random() * 4) + 1;// Random Points
+  tpoints[author.id].points += rPoints;
+  if(args[0] === `${hero.config.prefix}top`) {
+    let _voicePointer = 1;
+    let _textPointer = 1;
+    let _voiceArray = Object.values(vpoints);
+    let _textArray = Object.values(tpoints);
+    let _topText = _textArray.slice(0, 5).map(r => `**\`.${_textPointer++}\` | <@${r.id}> \`XP: ${r.points}\`**`).sort((a, b) => a > b).join('\n');
+    let _voiceText = _voiceArray.slice(0, 5).map(r => `**\`.${_voicePointer++}\` | <@${r.id}> \`XP: ${r.points}\`**`).sort((a, b) => a > b).join('\n');
+ 
+    let topRoyale = new Discord.RichEmbed();
+    topRoyale.setAuthor(message.author.username, message.author.avatarURL);
+    topRoyale.setTitle('# " Top');
+    //topRoyale.setThumbnail(message.guild.iconURL);
+    topRoyale.addField(`**TOP 5 TEXT 💬**`, _topText, true);
+    topRoyale.addField(`**TOP 5 VOICE 🎙**`, _voiceText, true);
+    topRoyale.setFooter(`Developed By: .RoyaleYouseeF¹⁵#5335`, message.guild.iconURL);
+    message.channel.send(topRoyale).catch(e => {
+      if(e) return message.channel.send(`**. Error; \`${e.message}\`**`);
+    });
+  }
+});
+ 
+hero.on('voiceStateUpdate', (u, member) => {
+  let author = member.user.id;
+  let guild = member.guild;
+  if(member.voiceChannel === null) return;
+  let rPoints = Math.floor(Math.random() * 4) + 1;// Random Points
+  setInterval(() => {
+    if(!member.voiceChannel) return;
+    if(member.selfDeafen) return;
+    vpoints[author].points += rPoints;
+  }, 5000); // 5 Secs
 });
 
 
