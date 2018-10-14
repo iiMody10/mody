@@ -259,7 +259,7 @@ client.on('message', message => {
 
 message.author.send(`**مدة الرابط : يـوم
 عدد استخدامات الرابط : 100**`)
-
+https://discord.gg/UpQHDF
 
     }
 });
