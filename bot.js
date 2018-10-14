@@ -329,7 +329,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "ban") {
+  if (command == "بان") {
                if(!message.channel.guild) return;
          
   if(!message.guild.member(message.author).hasPermission("MOVE_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**").then(msg => msg.delete(5000));
@@ -351,7 +351,7 @@ client.on('message', message => {
   .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
   .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
   .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-  client.channels.get("آي دي روم اللوق").send({embed : banembed})
+  client.channels.get("501177068084789249").send({embed : banembed})
 }
 });
 
