@@ -224,7 +224,7 @@ client.on('message',function(message) {
        muteMember.setMute(true)
        .then(() => { setTimeout(() => {
            muteMember.removeRole(muteRole)
-           muteMember.setMute(true)
+           muteMember.setMute(false)
        }, mmss(muteDuration));
        });
    } 
