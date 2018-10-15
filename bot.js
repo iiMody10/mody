@@ -412,14 +412,14 @@ client.on('message', message => {
 
 
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'اسم الشات العام حقك');
+    let channel = member.guild.channels.find('name', 'public');
     let memberavatar = member.user.avatarURL
       if (!channel) return; 
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
         .addField('🎽 | name :  ',`${member}`)
-        .addField('📢 | نورت السيرفر ي قلبي' , `Welcome to the server, ${member}`)
+        .addField('📢 | نورت سيرفر تيست' , `Welcome to the server, ${member}`)
         .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
                 .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
                
