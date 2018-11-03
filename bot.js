@@ -322,7 +322,7 @@ message.author.send(`**مدة الرابط : يـوم
 client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name","Support Team");
+        let support = message.guild.roles.find("name","Support");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
             return message.channel.send('Please type a subject for the ticket.');
@@ -412,7 +412,7 @@ client.on('message', message => {
 
 
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', '🎎wlc');
+    let channel = member.guild.channels.find('name', 'Walcome');
     let memberavatar = member.user.avatarURL
       if (!channel) return; 
     let embed = new Discord.RichEmbed()
